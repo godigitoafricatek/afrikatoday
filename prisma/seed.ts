@@ -3,7 +3,7 @@ import { PrismaPg } from '@prisma/adapter-pg'
 import { Pool } from 'pg'
 import bcrypt from 'bcryptjs'
 
-const pool = new Pool({ connectionString: 'postgresql://gatare@localhost:5432/afrikatoday' })
+const pool = new Pool({ connectionString: process.env.DATABASE_URL || 'postgresql://gatare@localhost:5432/afrikatoday' })
 const adapter = new PrismaPg(pool)
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const prisma = new PrismaClient({ adapter } as any)
